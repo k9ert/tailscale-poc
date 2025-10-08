@@ -18,7 +18,7 @@ based on: https://www.youtube.com/watch?v=XbTUWZt5ljQ
    "tag:k8s": ["tag:k8s-operator"],
 }
 ```
-* Create the oAuth clients with "Device Core" write and Auth Write and the k8s-operator tag and copy them in the values.yaml
+* Create the oAuth clients with "Device Core" write (and the k9s-operator) and Auth Write (and the k8s-operator) tag and copy them in the values.yaml
 
 ## deploying the cluster, the nginx and the tailscale operator
 

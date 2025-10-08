@@ -14,7 +14,10 @@ dry-run:
 	helm install --dry-run tail charts/tailscale
 
 deploy:
-	helm install tailscale charts/tailscale || helm upgrade tailscale charts/tailscale
+	# check for env vars
+	[ -n "$$CLIENT_ID" ] || (echo "CLIENT_ID is not set"; exit 1)
+	[ -n "$$CLIENT_SECRET" ] || (echo "CLIENT_SECRET is not set"; exit 1)
+	helm install --set-string=tailscale-operator.oauth.clientId=$$CLIENT_ID,tailscale-operator.oauth.clientSecret=$$CLIENT_SECRET tailscale charts/tailscale || helm upgrade --set-string=tailscale-operator.oauth.clientId=$$CLIENT_ID,tailscale-operator.oauth.clientSecret=$$CLIENT_SECRET tailscale charts/tailscale
 
 helm-dep-updates:
 	for dir in $$(ls ../charts); do \
