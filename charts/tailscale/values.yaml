@@ -1,0 +1,7 @@
+
+
+tailscale-operator:
+  enabled: true
+  oauth:
+    clientId: 'kSdNo17xz721CNTRL'
+    clientSecret: 'tskey-client-kSdNo17xz721CNTRL-1UqVA5wcTQ7VSURVykUEQ74LmNNMP84i'
