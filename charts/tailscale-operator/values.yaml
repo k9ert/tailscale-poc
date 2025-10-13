@@ -1,7 +1,5 @@
-
-
 tailscale-operator:
   enabled: true
   oauth:
     clientId: 
-    clientSecret: 
+    clientSecret:

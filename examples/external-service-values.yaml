@@ -1,0 +1,15 @@
+# Example values.yaml for accessing external Tailscale services from Kubernetes
+# This demonstrates how to configure cluster egress to access services running on Tailscale nodes
+
+# Access a web server running on a Tailscale node by MagicDNS name
+externalService:
+  enabled: true
+  name: "my-laptop-webserver"
+  # Replace with your actual Tailscale node's MagicDNS name
+  magicDnsName: "my-laptop.my-tailnet.ts.net"
+
+# Enable test pod for connectivity testing
+testPod:
+  enabled: true
+  name: "connectivity-test"
+  image: "curlimages/curl:latest"

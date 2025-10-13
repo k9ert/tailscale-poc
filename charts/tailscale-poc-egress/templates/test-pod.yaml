@@ -1,0 +1,24 @@
+# Test pod to verify external service access
+# This pod can be used to test connectivity to external Tailscale services
+{{- if .Values.testPod.enabled }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ .Values.testPod.name | default "tailscale-test-pod" }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: tailscale-test
+spec:
+  containers:
+  - name: test-container
+    image: {{ .Values.testPod.image | default "curlimages/curl:latest" }}
+    command: ["sleep", "3600"]  # Sleep for 1 hour
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "50m"
+      limits:
+        memory: "128Mi"
+        cpu: "100m"
+  restartPolicy: Never
+{{- end }}

@@ -1,0 +1,8 @@
+# Example values.yaml for the Tailscale Operator
+# This deploys only the Tailscale Kubernetes operator
+
+tailscale-operator:
+  enabled: true
+  oauth:
+    clientId: "YOUR_CLIENT_ID"
+    clientSecret: "YOUR_CLIENT_SECRET"

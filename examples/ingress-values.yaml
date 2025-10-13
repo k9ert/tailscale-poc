@@ -1,0 +1,13 @@
+# Example values.yaml for the Tailscale Ingress POC
+# This demonstrates exposing a Kubernetes service to the Tailscale network
+
+nginx:
+  enabled: true
+  image: nginx:latest
+  replicas: 1
+  service:
+    port: 8089
+    targetPort: 80
+  ingress:
+    enabled: true
+    hostname: nginx  # This will be the Tailscale hostname

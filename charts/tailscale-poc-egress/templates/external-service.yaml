@@ -1,0 +1,14 @@
+# External service access using MagicDNS name
+# This service allows cluster workloads to access a service running on a Tailscale node
+{{- if .Values.externalService.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.externalService.name | default "external-tailscale-service" }}
+  namespace: {{ .Values.namespace }}
+  annotations:
+    tailscale.com/tailnet-fqdn: {{ .Values.externalService.magicDnsName | quote }}
+spec:
+  type: ExternalName
+  externalName: placeholder  # This will be overwritten by the operator
+{{- end }}

@@ -1,0 +1,14 @@
+# Namespace for the ingress POC
+namespace: tailscale-ingress
+
+# Nginx deployment for demonstrating Tailscale Ingress
+nginx:
+  enabled: true
+  image: nginx:latest
+  replicas: 1
+  service:
+    port: 8089
+    targetPort: 80
+  ingress:
+    enabled: true
+    hostname: nginx  # This will be the Tailscale hostname

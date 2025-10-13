@@ -1,9 +1,11 @@
+{{- if .Values.nginx.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx
+  namespace: {{ .Values.namespace }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.nginx.replicas }}
   selector:
     matchLabels:
       app: nginx
@@ -14,6 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:latest
+        image: {{ .Values.nginx.image }}
         ports:
-        - containerPort: 80
+        - containerPort: {{ .Values.nginx.service.targetPort }}
+{{- end }}

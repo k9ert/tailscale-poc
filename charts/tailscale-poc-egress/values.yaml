@@ -1,0 +1,19 @@
+# Namespace for the egress POC
+namespace: tailscale-egress
+
+# External service access configuration (cluster egress)
+# Allows Kubernetes workloads to access services running on Tailscale nodes
+
+# Access external service by MagicDNS name
+externalService:
+  enabled: false
+  name: "external-service"
+  # Replace with the MagicDNS name of your Tailscale node
+  # Example: my-laptop.my-tailnet.ts.net
+  magicDnsName: ""
+
+# Test pod for verifying external service access
+testPod:
+  enabled: false
+  name: "tailscale-test-pod"
+  image: "curlimages/curl:latest"
